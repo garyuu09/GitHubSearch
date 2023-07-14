@@ -6,3 +6,18 @@
 //
 
 import Foundation
+
+struct Repository: Codable, Identifiable {
+    var id: Int
+    var name: String
+    var description: String?
+    var owner: Owner
+}
+
+struct Owner: Codable {
+    var login: String
+}
+
+struct RepositoryResponse: Codable {
+    var items: [Repository]
+}
