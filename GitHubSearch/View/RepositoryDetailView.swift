@@ -8,13 +8,25 @@
 import SwiftUI
 
 struct RepositoryDetailView: View {
+    var repository: Repository
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .leading) {
+            Text(repository.name)
+                .font(.title)
+            Text(repository.description ?? "")
+                .font(.subheadline)
+                .foregroundColor(.gray)
+            HStack {
+                Text("Owner:")
+                    .font(.headline)
+                Text(repository.owner.login)
+                    .font(.subheadline)
+            }
+            Spacer()
+        }
+        .padding()
+        .navigationBarTitle(repository.name)
     }
 }
 
-struct RepositoryDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        RepositoryDetailView()
-    }
-}
