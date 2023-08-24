@@ -30,6 +30,7 @@ struct ContentView: View {
     }
 }
 
+// 検索欄と検索ボタン
 struct SearchBar: View {
     @Binding var text: String
     var onSearch: () -> Void
@@ -48,6 +49,7 @@ struct SearchBar: View {
     }
 }
 
+// 検索結果レコード一覧を表示
 struct RepositoryRow: View {
     var repository: Repository
 
