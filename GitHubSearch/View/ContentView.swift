@@ -34,17 +34,28 @@ struct ContentView: View {
 struct SearchBar: View {
     @Binding var text: String
     var onSearch: () -> Void
+    @State private var confirmDialogue = false
 
     var body: some View {
         HStack {
             TextField("Search repositories", text: $text)
-                .onSubmit { onSearch() }
+                .onSubmit { confirmDialogue = true }
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding(.horizontal, 16)
-            Button(action: onSearch) {
+            Button {
+                confirmDialogue = true
+            } label: {
                 Text("Search")
             }
             .padding(.trailing, 16)
+        }
+        .alert("確認", isPresented: $confirmDialogue) {
+            Button("実行") {
+                onSearch()
+                confirmDialogue = false
+            }
+        } message: {
+            Text("検索を実行しますか。")
         }
     }
 }
