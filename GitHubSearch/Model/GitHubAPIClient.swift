@@ -20,7 +20,9 @@ final class GithubAPIClient {
         }
         switch httpResponse.statusCode {
         case 200..<300:
-            guard let decodedResponse = try? JSONDecoder().decode(RepositoryResponse.self, from: data) else {
+            guard let decodedResponse = try?
+                    // JsonからSwiftのインスタンスへ変換する。
+                    JSONDecoder().decode(RepositoryResponse.self, from: data) else {
                 throw APIError.decodeError
             }
             return decodedResponse

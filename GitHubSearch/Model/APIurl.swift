@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// 受け取った検索キーワード(`searchText`)を使ってURLを作成する。
 struct APIurl {
     static func githubURLString(searchText: String) throws -> URL {
         let urlString = "https://api.github.com/search/repositories?q=\(searchText)"
