@@ -11,22 +11,30 @@ struct RepositoryDetailView: View {
     var repository: Repository
 
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(repository.name)
-                .font(.title)
-            Text(repository.description ?? "")
-                .font(.subheadline)
-                .foregroundColor(.gray)
-            HStack {
-                Text("Owner:")
-                    .font(.headline)
-                Text(repository.owner.login)
-                    .font(.subheadline)
+        VStack {
+            VStack(alignment: .center)  {
+                AsyncImage(url: repository.owner.imageURL)
             }
+            .frame(width: 50, height: 50)
             Spacer()
+            VStack(alignment: .leading) {
+                Text(repository.name)
+                    .font(.title)
+
+                Text(repository.description ?? "")
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+                HStack {
+                    Text("Owner:")
+                        .font(.headline)
+                    Text(repository.owner.login)
+                        .font(.subheadline)
+                }
+                Spacer()
+            }
+            .padding()
+            .navigationBarTitle(repository.name)
         }
-        .padding()
-        .navigationBarTitle(repository.name)
     }
 }
 
