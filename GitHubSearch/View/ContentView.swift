@@ -51,6 +51,9 @@ struct SearchBar: View {
         }
         .alert("確認", isPresented: $confirmDialogue) {
             Button("実行") {
+            Button("Cancel") {
+                confirmDialogue = false
+            }
                 onSearch()
                 confirmDialogue = false
             }
