@@ -49,16 +49,16 @@ struct SearchBar: View {
             }
             .padding(.trailing, 16)
         }
-        .alert("確認", isPresented: $confirmDialogue) {
-            Button("実行") {
+        .alert("Confirmation", isPresented: $confirmDialogue) {
             Button("Cancel") {
                 confirmDialogue = false
             }
+            Button("OK") {
                 onSearch()
                 confirmDialogue = false
             }
         } message: {
-            Text("検索を実行しますか。")
+            Text("Would you like to execute a search?")
         }
     }
 }
