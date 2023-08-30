@@ -25,8 +25,6 @@ struct RepositoryDetailView: View {
                     }
                 }
             }
-            .frame(width: 50, height: 50)
-            Spacer()
             VStack(alignment: .leading) {
                 Text(repository.name)
                     .font(.title)
