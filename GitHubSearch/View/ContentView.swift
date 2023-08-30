@@ -27,6 +27,13 @@ struct ContentView: View {
             }
             .navigationBarTitle("GitHub Repositories")
         }
+        .alert("Repository not found", isPresented: $viewModel.showAlert) {
+            Button("OK") {
+                viewModel.showAlert = false
+            }
+        } message: {
+            Text("Sorry, repositories were not found. Please try searching with a different keyword.")
+        }
     }
 }
 
