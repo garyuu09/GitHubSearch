@@ -40,9 +40,9 @@ struct RepositoryDetailView: View {
                 }
                 Spacer()
             }
-            .padding()
-            .navigationBarTitle(repository.name)
         }
+        .padding()
+        .navigationBarTitle(repository.name)
     }
 }
 
