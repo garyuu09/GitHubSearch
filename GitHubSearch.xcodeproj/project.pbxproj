@@ -20,6 +20,7 @@
 		D6E499CE2A5244C9007F9FB0 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E499CD2A5244C9007F9FB0 /* APIError.swift */; };
 		D6E499D02A524538007F9FB0 /* RepositoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E499CF2A524538007F9FB0 /* RepositoryDetailView.swift */; };
 		D6E499D22A524554007F9FB0 /* RepositoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E499D12A524554007F9FB0 /* RepositoryViewModel.swift */; };
+		D6ED927A2A9F5CBB00D84517 /* SearchError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6ED92792A9F5CBB00D84517 /* SearchError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		D6E499CD2A5244C9007F9FB0 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		D6E499CF2A524538007F9FB0 /* RepositoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailView.swift; sourceTree = "<group>"; };
 		D6E499D12A524554007F9FB0 /* RepositoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewModel.swift; sourceTree = "<group>"; };
+		D6ED92792A9F5CBB00D84517 /* SearchError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 				D6E499C92A5244A2007F9FB0 /* GitHubAPIClient.swift */,
 				D6E499CB2A5244B7007F9FB0 /* APIurl.swift */,
 				D6E499CD2A5244C9007F9FB0 /* APIError.swift */,
+				D6ED92792A9F5CBB00D84517 /* SearchError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				D6E499D02A524538007F9FB0 /* RepositoryDetailView.swift in Sources */,
 				D6E499C82A524479007F9FB0 /* RepositoryModel.swift in Sources */,
 				D6E4999D2A51B896007F9FB0 /* ContentView.swift in Sources */,
+				D6ED927A2A9F5CBB00D84517 /* SearchError.swift in Sources */,
 				D6E499CC2A5244B7007F9FB0 /* APIurl.swift in Sources */,
 				D6E4999B2A51B896007F9FB0 /* GitHubSearchApp.swift in Sources */,
 				D6E499CE2A5244C9007F9FB0 /* APIError.swift in Sources */,
