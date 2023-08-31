@@ -49,6 +49,10 @@ struct SearchBar: View {
                 .onSubmit { confirmDialogue = true }
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding(.horizontal, 16)
+                .autocapitalization(.none)
+                .keyboardType(.asciiCapable)
+                .onChange(of: text, perform: filter)
+
             Button {
                 confirmDialogue = true
             } label: {
@@ -67,6 +71,11 @@ struct SearchBar: View {
         } message: {
             Text("Would you like to execute a search?")
         }
+    }
+    func filter(value: String) {
+        let validCodes = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        let sets = CharacterSet(charactersIn: validCodes)
+        text = String(value.unicodeScalars.filter(sets.contains).map(Character.init))
     }
 }
 
