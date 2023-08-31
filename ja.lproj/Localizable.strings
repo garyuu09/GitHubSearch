@@ -1,0 +1,21 @@
+/* 
+  Localizable.strings
+  GitHubSearch
+
+  Created by Ryuga on 2023/08/31.
+  
+*/
+
+"GitHub Repositories" = "GitHubレポジトリ";
+"Repository not found" = "レポジトリが見つかりません。";
+"OK" = "OK";
+"Sorry, repositories were not found. Please try searching with a different keyword." = "検索結果が0件のため、再度検索キーワードを入力してください。";
+
+
+"Search repositories" = "レポジトリを検索する。";
+"Search" = "検索";
+"Confirmation" = "確認";
+"Would you like to execute a search?" = "検索を実行しますか。";
+"No image" = "No image";
+
+"Owner:" = "オーナー:";
