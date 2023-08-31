@@ -39,6 +39,7 @@ struct ContentView: View {
 
 // 検索欄と検索ボタン
 struct SearchBar: View {
+    @FocusState var isActive: Bool
     @Binding var text: String
     var onSearch: () -> Void
     @State private var confirmDialogue = false
@@ -52,9 +53,11 @@ struct SearchBar: View {
                 .autocapitalization(.none)
                 .keyboardType(.asciiCapable)
                 .onChange(of: text, perform: filter)
+                .focused($isActive)
 
             Button {
                 confirmDialogue = true
+                isActive = false
             } label: {
                 Text("Search")
             }
