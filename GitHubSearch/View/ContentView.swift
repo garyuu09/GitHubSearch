@@ -11,7 +11,7 @@ struct ContentView: View {
     @StateObject var viewModel = RepositoryViewModel()
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 SearchBar(text: $viewModel.searchText, onSearch: {
                     Task {
@@ -25,7 +25,7 @@ struct ContentView: View {
                     }
                 }
             }
-            .navigationBarTitle("GitHub Repositories")
+            .navigationTitle("GitHub Repositories")
         }
         .alert("Repository not found", isPresented: $viewModel.showAlert) {
             Button("OK") {
