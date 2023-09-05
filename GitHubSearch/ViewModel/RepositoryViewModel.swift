@@ -11,22 +11,32 @@ import SwiftUI
 class RepositoryViewModel: ObservableObject {
     @Published var repositories: [Repository] = []
     @Published var searchText: String = ""
-    @Published var showAlert: Bool = false
+    @Published var isShowAlert: Bool = false
+    @Published var isShowIndicator: Bool = false
     private var apiClient = GithubAPIClient()
 
     func fetch() async throws {
-        do {
-            repositories = try await apiClient.searchRepositories(url:
-            APIurl.githubURLString(searchText: searchText)
-            ).items
-            // 検索結果が0件の場合にアラートダイアログを表示する。
-            if repositories.isEmpty {
-                self.showAlert = true
-                throw SearchError.noSearchResults
+        Task {
+            isShowIndicator = true
+            defer {
+                isShowIndicator = false
             }
-        }
-        catch {
-            throw APIError.decodeError
+            // 非同期タスクで0.5秒間スリープする。
+            try? await Task.sleep(nanoseconds: 500_000_000)
+
+            do {
+                repositories = try await apiClient.searchRepositories(
+                url: APIurl.githubURLString(searchText: searchText)
+                ).items
+                // 検索結果が0件の場合にアラートダイアログを表示する。
+                if repositories.isEmpty {
+                    self.isShowAlert = true
+                    throw SearchError.noSearchResults
+                }
+            }
+            catch {
+                throw APIError.decodeError
+            }
         }
     }
 }
