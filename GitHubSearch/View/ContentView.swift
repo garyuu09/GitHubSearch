@@ -28,6 +28,7 @@ struct ContentView: View {
             .navigationTitle("GitHub Repositories")
         }
         .alert("Repository not found", isPresented: $viewModel.showAlert) {
+        .loading(isRefreshing: viewModel.isShowIndicator)
             Button("OK") {
                 viewModel.showAlert = false
             }
