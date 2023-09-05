@@ -42,7 +42,7 @@ struct RepositoryDetailView: View {
             }
         }
         .padding()
-        .navigationBarTitle(repository.name)
+        .navigationTitle(repository.name)
     }
 }
 
