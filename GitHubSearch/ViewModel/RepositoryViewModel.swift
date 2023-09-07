@@ -28,14 +28,14 @@ class RepositoryViewModel: ObservableObject {
                 repositories = try await apiClient.searchRepositories(
                 url: APIurl.githubURLString(searchText: searchText)
                 ).items
-                // 検索結果が0件の場合にアラートダイアログを表示する。
-                if repositories.isEmpty {
-                    self.isShowAlert = true
-                    throw SearchError.noSearchResults
-                }
             }
             catch {
                 throw APIError.decodeError
+            }
+            // 検索結果が0件の場合にアラートダイアログを表示する。
+            if repositories.isEmpty {
+                self.isShowAlert = true
+                throw SearchError.noSearchResults
             }
         }
     }
