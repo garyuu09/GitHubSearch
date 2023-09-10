@@ -14,7 +14,7 @@ class RepositoryViewModel: ObservableObject {
     @Published var isShowAlert: Bool = false
     @Published var isShowIndicator: Bool = false
 
-    // 疎結合
+    // テスト用のイニシャライザ
     private let apiClient: GitHubAPIClientInterface
     init(apiClient: GitHubAPIClientInterface) {
         self.apiClient = apiClient
