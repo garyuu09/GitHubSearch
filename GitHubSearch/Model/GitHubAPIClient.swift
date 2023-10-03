@@ -7,7 +7,11 @@
 
 import Foundation
 
-final class GithubAPIClient {
+protocol GitHubAPIClientInterface {
+    func searchRepositories(url: URL) async throws -> RepositoryResponse
+}
+
+final class GitHubAPIClient: GitHubAPIClientInterface {
 
     func searchRepositories(url: URL) async throws -> RepositoryResponse {
         // URLRequestを作成
