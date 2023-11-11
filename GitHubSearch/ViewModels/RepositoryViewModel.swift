@@ -13,7 +13,6 @@ class RepositoryViewModel: ObservableObject {
     @Published var searchText: String = ""
     @Published var isShowAlert: Bool = false
     @Published var isShowIndicator: Bool = false
-    @Published var text: String = ""
 
     // テスト用のイニシャライザ
     private let apiClient: GitHubAPIClientInterface
@@ -54,6 +53,6 @@ class RepositoryViewModel: ObservableObject {
     func filter(value: String) {
         let validCodes = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
         let sets = CharacterSet(charactersIn: validCodes)
-        text = String(value.unicodeScalars.filter(sets.contains).map(Character.init))
+        searchText = String(value.unicodeScalars.filter(sets.contains).map(Character.init))
     }
 }
