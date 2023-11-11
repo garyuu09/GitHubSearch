@@ -13,7 +13,17 @@ class RepositoryViewModel: ObservableObject {
     @Published var searchText: String = ""
     @Published var isShowAlert: Bool = false
     @Published var isShowIndicator: Bool = false
-    private var apiClient = GithubAPIClient()
+
+    // テスト用のイニシャライザ
+    private let apiClient: GitHubAPIClientInterface
+
+    convenience init() {
+        self.init(apiClient: GitHubAPIClient())
+    }
+    // Dependency Injection
+    init(apiClient: GitHubAPIClientInterface) {
+        self.apiClient = apiClient
+    }
 
     func fetch() async throws {
         Task {
