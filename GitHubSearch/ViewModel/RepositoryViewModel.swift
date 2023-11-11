@@ -16,6 +16,11 @@ class RepositoryViewModel: ObservableObject {
 
     // テスト用のイニシャライザ
     private let apiClient: GitHubAPIClientInterface
+
+    convenience init() {
+        self.init(apiClient: GitHubAPIClient())
+    }
+    // Dependency Injection
     init(apiClient: GitHubAPIClientInterface) {
         self.apiClient = apiClient
     }
