@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D692FAD02AE7BF7D00856363 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D692FACF2AE7BF7D00856363 /* MockURLSession.swift */; };
+		D692FAD22AE7BFC100856363 /* MockRepoAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D692FAD12AE7BFC100856363 /* MockRepoAPIClient.swift */; };
+		D692FAD42AE7D8AF00856363 /* StubRepositoryFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D692FAD32AE7D8AF00856363 /* StubRepositoryFetcher.swift */; };
 		D6ABDEA22AAD9E5F004E1BA4 /* RepositoryViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6ABDEA12AAD9E5F004E1BA4 /* RepositoryViewModelTest.swift */; };
 		D6E4999B2A51B896007F9FB0 /* GitHubSearchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E4999A2A51B896007F9FB0 /* GitHubSearchApp.swift */; };
 		D6E4999D2A51B896007F9FB0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E4999C2A51B896007F9FB0 /* ContentView.swift */; };
@@ -44,6 +47,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D692FACF2AE7BF7D00856363 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
+		D692FAD12AE7BFC100856363 /* MockRepoAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRepoAPIClient.swift; sourceTree = "<group>"; };
+		D692FAD32AE7D8AF00856363 /* StubRepositoryFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubRepositoryFetcher.swift; sourceTree = "<group>"; };
 		D6ABDEA12AAD9E5F004E1BA4 /* RepositoryViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewModelTest.swift; sourceTree = "<group>"; };
 		D6B53A532A618D3D00258B3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D6E499972A51B896007F9FB0 /* GitHubSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +99,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D692FACE2AE7BF4B00856363 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				D692FACF2AE7BF7D00856363 /* MockURLSession.swift */,
+				D692FAD12AE7BFC100856363 /* MockRepoAPIClient.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		D6ABDE9E2AAC926A004E1BA4 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +156,7 @@
 		D6E499A02A51B897007F9FB0 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				D692FACE2AE7BF4B00856363 /* Mocks */,
 				D6E499A12A51B897007F9FB0 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -151,6 +167,7 @@
 			children = (
 				D6E499AB2A51B897007F9FB0 /* GitHubSearchTests.swift */,
 				D6ABDEA12AAD9E5F004E1BA4 /* RepositoryViewModelTest.swift */,
+				D692FAD32AE7D8AF00856363 /* StubRepositoryFetcher.swift */,
 			);
 			path = GitHubSearchTests;
 			sourceTree = "<group>";
@@ -335,6 +352,8 @@
 				D6ED92832AA6BB5500D84517 /* LoadingViewModifier.swift in Sources */,
 				D6E499D22A524554007F9FB0 /* RepositoryViewModel.swift in Sources */,
 				D6E499CA2A5244A2007F9FB0 /* GitHubAPIClient.swift in Sources */,
+				D692FAD22AE7BFC100856363 /* MockRepoAPIClient.swift in Sources */,
+				D692FAD02AE7BF7D00856363 /* MockURLSession.swift in Sources */,
 				D6E499D02A524538007F9FB0 /* RepositoryDetailView.swift in Sources */,
 				D6E499C82A524479007F9FB0 /* RepositoryModel.swift in Sources */,
 				D6E4999D2A51B896007F9FB0 /* ContentView.swift in Sources */,
@@ -350,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6ABDEA22AAD9E5F004E1BA4 /* RepositoryViewModelTest.swift in Sources */,
+				D692FAD42AE7D8AF00856363 /* StubRepositoryFetcher.swift in Sources */,
 				D6E499AC2A51B897007F9FB0 /* GitHubSearchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
