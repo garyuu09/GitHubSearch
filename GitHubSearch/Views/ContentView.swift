@@ -23,6 +23,11 @@ struct ContentView: View {
         }
         /// 検索窓と検索実行処理を記載
         .searchable(text: $viewModel.searchText, prompt: "Search repositories")
+        .overlay {
+            if viewModel.repositories.isEmpty {
+                ContentUnavailableView.search
+            }
+        }
         .onSubmit(of: .search) {
             Task {
                 try? await viewModel.fetch()
