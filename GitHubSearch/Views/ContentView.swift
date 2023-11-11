@@ -13,12 +13,6 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                SearchBar(text: $viewModel.searchText, onSearch: {
-                    Task {
-                        try? await viewModel.fetch()
-                    }
-                })
-                .padding(.horizontal, 8)
                 List(viewModel.repositories) { repository in
                     NavigationLink(destination: RepositoryDetailView(repository: repository)) {
                         RepositoryRow(repository: repository)
@@ -27,7 +21,17 @@ struct ContentView: View {
             }
             .navigationTitle("GitHub Repositories")
         }
+        /// 検索窓と検索実行処理を記載
+        .searchable(text: $viewModel.searchText, prompt: "Search repositories")
+        .onSubmit(of: .search) {
+            Task {
+                try? await viewModel.fetch()
+            }
+        }
+        .onChange(of: viewModel.searchText, perform: viewModel.filter)
         .loading(isRefreshing: viewModel.isShowIndicator)
+
+        /// アラート: レポジトリが見つからなかったとき
         .alert("Repository not found", isPresented: $viewModel.isShowAlert) {
             Button("OK") {
                 viewModel.isShowAlert = false
@@ -35,51 +39,6 @@ struct ContentView: View {
         } message: {
             Text("Sorry, repositories were not found. Please try searching with a different keyword.")
         }
-    }
-}
-
-// 検索欄と検索ボタン
-struct SearchBar: View {
-    @FocusState var isActive: Bool
-    @Binding var text: String
-    var onSearch: () -> Void
-    @State private var confirmDialogue = false
-
-    var body: some View {
-        HStack {
-            TextField("Search repositories", text: $text)
-                .onSubmit { confirmDialogue = true }
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding(.horizontal, 16)
-                .autocapitalization(.none)
-                .keyboardType(.asciiCapable)
-                .onChange(of: text, perform: filter)
-                .focused($isActive)
-
-            Button {
-                confirmDialogue = true
-                isActive = false
-            } label: {
-                Text("Search")
-            }
-            .padding(.trailing, 16)
-        }
-        .alert("Confirmation", isPresented: $confirmDialogue) {
-            Button("Cancel") {
-                confirmDialogue = false
-            }
-            Button("OK") {
-                onSearch()
-                confirmDialogue = false
-            }
-        } message: {
-            Text("Would you like to execute a search?")
-        }
-    }
-    func filter(value: String) {
-        let validCodes = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        let sets = CharacterSet(charactersIn: validCodes)
-        text = String(value.unicodeScalars.filter(sets.contains).map(Character.init))
     }
 }
 
