@@ -33,7 +33,9 @@ struct ContentView: View {
                 try? await viewModel.fetch()
             }
         }
-        .onChange(of: viewModel.searchText, perform: viewModel.filter)
+        .onChange(of: viewModel.searchText) { _, newSearchText in
+            viewModel.filter(value: newSearchText)
+        }
         .loading(isRefreshing: viewModel.isShowIndicator)
 
         /// アラート: レポジトリが見つからなかったとき
