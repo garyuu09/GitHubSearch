@@ -11,6 +11,7 @@ import SwiftUI
 class RepositoryViewModel: ObservableObject {
     @Published var repositories: [Repository] = []
     @Published var searchText: String = ""
+    @Published var searchedText: String = ""
     @Published var isShowAlert: Bool = false
     @Published var isShowIndicator: Bool = false
 
@@ -30,6 +31,7 @@ class RepositoryViewModel: ObservableObject {
             isShowIndicator = true
             defer {
                 isShowIndicator = false
+                searchedText = searchText
             }
             // 非同期タスクで0.5秒間スリープする。
             try? await Task.sleep(nanoseconds: 500_000_000)
