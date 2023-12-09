@@ -25,7 +25,7 @@ struct ContentView: View {
         .searchable(text: $viewModel.searchText, prompt: "Search repositories")
         .overlay {
             if viewModel.repositories.isEmpty {
-                ContentUnavailableView.search
+                ContentUnavailableView.search(text: viewModel.searchedText)
             }
         }
         .onSubmit(of: .search) {
