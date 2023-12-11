@@ -11,7 +11,7 @@ GitHubSearch Appは、任意のキーワードを入力することでGitHubレ�
 
 - 何かしらのキーワードを入力
 - GitHub API（search/repositories）でリポジトリーを検索し、結果一覧を概要（リポジトリ名）で表示
-- 特定の結果を選択したら、該当リポジトリの詳細（リポジトリ名、オーナーアイコン、プロジェクト言語、Star 数、Watcher 数、Fork 数、Issue 数）を表示
+- 特定の結果を選択したら、該当リポジトリの詳細を表示
 
 ## 動作環境
 
@@ -24,6 +24,11 @@ GitHubSearch Appは、任意のキーワードを入力することでGitHubレ�
 - IDE：Xcode 15.0.1 (15A507)
 - Swift：Swift 5.9
 - Deployment Target：iOS 17.1
+
+## 仕様技術
+- SwiftUI
+- Swift Concurrency
+- MVVM
 
 ## インストール方法
 
