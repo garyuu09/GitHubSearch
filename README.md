@@ -25,7 +25,7 @@ GitHubSearch Appは、任意のキーワードを入力することでGitHubレ�
 - Swift：Swift 5.9
 - Deployment Target：iOS 17.1
 
-## 仕様技術
+## 使用技術
 - SwiftUI
 - Swift Concurrency
 - MVVM
