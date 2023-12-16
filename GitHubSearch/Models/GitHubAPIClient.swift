@@ -17,7 +17,7 @@ final class GitHubAPIClient: GitHubAPIClientInterface {
 
         // URLRequestを作成
         var request = URLRequest(url: url)
-        request.setValue("Bearer API_KEY", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(Constants.apiKey)", forHTTPHeaderField: "Authorization")
 
         // URLSessionでRequest
         let (data, response) = try await URLSession.shared.data(from: url)
