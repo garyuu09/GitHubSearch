@@ -8,29 +8,44 @@
 import XCTest
 @testable import GitHubSearch
 
-final class GitHubSearchTests: XCTestCase {
+class GitHubAPIClientTests: XCTestCase {
+    var stubAPIClient: StubGitHubAPIClient!
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    override func setUp() {
+        super.setUp()
+        stubAPIClient = StubGitHubAPIClient()
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    override func tearDown() {
+        stubAPIClient = nil
+        super.tearDown()
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    func testSearchRepositoriesSuccess() async throws {
+        // スタブに成功レスポンスを設定
+        stubAPIClient.stubbedResponse = RepositoryResponse(items: mockRepositories)
+
+        let response = try await stubAPIClient.searchRepositories(url: URL(string: "https://example.com")!)
+
+        // 成功レスポンスが得られたことを確認
+        XCTAssertEqual(response.items.count, 6)
+        XCTAssertEqual(response.items[0].id, 1)
+        XCTAssertEqual(response.items[0].name, "TestRepo_1")
+        XCTAssertEqual(response.items[0].description, "A test repository 1")
+        XCTAssertEqual(response.items[0].owner.login, "TestUser_1")
+        XCTAssertEqual(response.items[0].owner.imageURL, URL(string: "https://example.com/image1.png")!)
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testSearchRepositoriesFailure() async throws {
+        // スタブにエラーを設定
+        stubAPIClient.stubbedError = APIError.responseError
+
+        do {
+            _ = try await stubAPIClient.searchRepositories(url: URL(string: "https://example.com")!)
+            XCTFail("エラーが発生することを期待していましたが、発生しませんでした")
+        } catch {
+            // エラーが発生したことを確認
+            XCTAssertNotNil(error)
         }
     }
-
 }
